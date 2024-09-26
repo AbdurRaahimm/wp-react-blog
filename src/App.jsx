@@ -1,41 +1,36 @@
-import { useState } from 'react'
-import reactLogo from '/react.svg'
-import viteLogo from '/vite.svg'
-import tailwindLogo from '/tailwindLogo.png'
-import './App.css'
+import { lazy, Suspense } from "react";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 
-function App() {
-  const [count, setCount] = useState(0)
-  console.log(count); 
+import Layout from "./components/Layout";
+const SignIn = lazy(() => import("./pages/SignIn"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+const Home = lazy(() => import("./pages/Home"));
+const SinglePost = lazy(() => import("./pages/SinglePost"));
+const EditPost = lazy(() => import("./pages/EditPost"));
+
+import ProtectRoute from "./components/ProtectRoute"; 
+import PublicRoute from "./components/PublicRoute";
+
+
+const routes = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<ProtectRoute> <Home /> </ProtectRoute>} />
+        <Route path="post/:id" element={ <ProtectRoute><SinglePost /></ProtectRoute>} />
+        <Route path="edit/:id" element={ <ProtectRoute><EditPost /></ProtectRoute> } />
+      </Route>
+      <Route path="/signin" element={ <PublicRoute><SignIn /></PublicRoute> } />
+      <Route path="/signup" element={ <PublicRoute><SignUp /></PublicRoute> } />
+      <Route path="*" element={<h1>404 Not Found</h1>} />
+    </>
+  )
+)
+
+export default function App() {
   return (
-    <div className=''>
-      <div className='flex justify-center'>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo " alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react " alt="React logo" />
-        </a>
-        <a href="https://tailwindcss.com/docs" target="_blank">
-          <img src={tailwindLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="text-3xl font-bold text-green-500">Vite + React + Tailwind</h1>
-      <div className="card">
-        <button className='border-4 bg-indigo-500  focus:outline-none' onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p className='text-gray-900 py-2'>
-        <a className='text-green-500 capitalize' href="https://www.showwcase.com/abdurrahim" target="_blank">
-         created Starter by @Sayed Abdur Rahim
-        </a>
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite, React and Tailwind logos to learn more
-      </p>
-    </div>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <RouterProvider router={routes} />
+    </Suspense>
   )
 }
-
-export default App
