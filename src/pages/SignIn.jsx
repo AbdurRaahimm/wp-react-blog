@@ -30,7 +30,7 @@ export default function SignIn() {
                 toast.success(data.message);
                 navigate('/')
             }else {
-                toast.error(data.error)
+                toast.error(data.message)
                 setLoading(false)
             }
         } catch (error) {

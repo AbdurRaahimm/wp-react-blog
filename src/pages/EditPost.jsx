@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { usePosts } from '../context/posts';
+import { toast } from 'react-toastify';
 
 export default function EditPost() {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ export default function EditPost() {
         const content = formData.get('content');
         try {
             await updatePost(dispatch, {id: post.id, title, content, status: 'publish'});
+            toast.success('Post updated successfully');
             navigate('/');
         } catch (error) {
             console.error('Error updating post:', error);

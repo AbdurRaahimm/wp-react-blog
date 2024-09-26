@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { usePosts } from '../context/posts';
+import { toast } from 'react-toastify';
 
 export default function SinglePost() {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function SinglePost() {
         const confirmDelete = window.confirm('Are you sure you want to delete this post?');
         if (confirmDelete) {
             deletePost( dispatch, post.id);
+            toast.success('Post deleted successfully');
             navigate('/');
         }
     };

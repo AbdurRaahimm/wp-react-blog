@@ -12,12 +12,13 @@ import ProtectRoute from "./components/ProtectRoute";
 import PublicRoute from "./components/PublicRoute";
 import Loading from "./components/Loading";
 import NotFound from "./pages/NotFound";
+import ErrorPage from "./pages/ErrorPage";
 
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Layout />}  >
+      <Route path="/" element={<Layout />} errorElement={<ErrorPage/>}  >
         <Route index element={<ProtectRoute> <Home /> </ProtectRoute>} />
         <Route path="post/:id" element={ <ProtectRoute><SinglePost /></ProtectRoute>} />
         <Route path="edit/:id" element={ <ProtectRoute><EditPost /></ProtectRoute> } />

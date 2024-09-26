@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { usePosts } from '../context/posts';
 
 export default function PostCreateModal() {
@@ -9,6 +10,8 @@ export default function PostCreateModal() {
         const content = formData.get('content');
         try {
             await createPost(dispatch, { title, content, status: 'publish' });
+            e.target.reset();
+            toast.success('Post created successfully');
         } catch (error) {
             console.error('Error creating post:', error);
         }

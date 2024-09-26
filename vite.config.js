@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://dev-wordpresss.pantheonsite.io',
+        target: 'https://dev-wpreactjs.pantheonsite.io/',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, '')
