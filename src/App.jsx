@@ -10,26 +10,28 @@ const EditPost = lazy(() => import("./pages/EditPost"));
 
 import ProtectRoute from "./components/ProtectRoute"; 
 import PublicRoute from "./components/PublicRoute";
+import Loading from "./components/Loading";
+import NotFound from "./pages/NotFound";
 
 
 const routes = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<Layout />}  >
         <Route index element={<ProtectRoute> <Home /> </ProtectRoute>} />
         <Route path="post/:id" element={ <ProtectRoute><SinglePost /></ProtectRoute>} />
         <Route path="edit/:id" element={ <ProtectRoute><EditPost /></ProtectRoute> } />
       </Route>
       <Route path="/signin" element={ <PublicRoute><SignIn /></PublicRoute> } />
       <Route path="/signup" element={ <PublicRoute><SignUp /></PublicRoute> } />
-      <Route path="*" element={<h1>404 Not Found</h1>} />
+      <Route path="*" element={<NotFound/>} />
     </>
   )
 )
 
 export default function App() {
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<Loading />}>
       <RouterProvider router={routes} />
     </Suspense>
   )
