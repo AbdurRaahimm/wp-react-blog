@@ -1,16 +1,21 @@
-# React Vite Tailwind Project
-This is a template for a React project with Vite and Tailwind CSS.
+# WordPress API with React Blog  
+This is a simple blog project using WordPress API with React. This project is created with Vite, React, and Tailwind CSS. This project is created for educational purposes. You can use this project to learn how to use WordPress API with React.
+
 
 ## Usage
 1. Clone this repository
 ```bash
-git clone https://github.com/AbdurRaahimm/react-vite-tailwind-starter.git
+git clone https://github.com/AbdurRaahimm/wp-react-blog.git
 ```
-2. Run The Essential Dependency
+2. Change the directory
+```bash
+cd wp-react-blog
+```
+3. Run The Essential Dependency
 ```bash
 npm install
 ```
-3. Run `npm run dev` to start the development server
+4. Run `npm run dev` to start the development server
 ```bash
 npm run dev
 ```
@@ -18,18 +23,22 @@ npm run dev
 ```bash
 npm run build
 ```
-5. Run `npm run serve` to serve the build
-```bash
-npm run serve
-```
 
 ## Features
-- React
-- Vite
-- Tailwind CSS
-- ESLint
-- Prettier
+- WordPress API Integration with React 
+- Authentication with  JWT Token 
+- User Registration and Login
+- Create, Update, Delete Post 
 
+## Technologies
+- Vite 
+- React 
+- Tailwind CSS
+- WordPress API
+- JWT Token
+
+## License
+This project is open-sourced software licensed under the MIT license. 
 
 ## Connect on Social Media
 - [Twitter](https://twitter.com/AbdurRahim4G)
