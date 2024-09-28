@@ -37,6 +37,8 @@ npm run build
 - WordPress API
 - JWT Token
 
+## Live Demo 
+
 ## License
 This project is open-sourced software licensed under the MIT license. 
 
